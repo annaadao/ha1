@@ -112,7 +112,7 @@ class CalculatorTest {
     //2. Teilaufgabe: Rote Tests
 
     @Test
-    @DisplayName("")
+    @DisplayName("should clear screen after clicking on clear key once, latest result maintained")
     void pressClearKey() {
         Calculator calc = new Calculator();
 
@@ -122,9 +122,27 @@ class CalculatorTest {
         calc.pressEqualsKey();
         calc.pressClearKey();
 
-
         String expected = "3";
         String actual = calc.readScreen();
+
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    @DisplayName("should clear screen and latest result after clicking on clear key twice")
+    void pressClearKeyTwice() {
+        Calculator calc = new Calculator();
+
+        calc.pressDigitKey(2);
+        calc.pressBinaryOperationKey("+");
+        calc.pressDigitKey(2);
+        calc.pressEqualsKey();
+        calc.pressClearKey();
+        calc.pressClearKey();
+
+        String expected = "4";
+        String actual = calc.readScreen();
+
         assertEquals(expected, actual);
     }
 
