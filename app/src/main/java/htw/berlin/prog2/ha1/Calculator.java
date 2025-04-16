@@ -22,6 +22,20 @@ public class Calculator {
     }
 
     /**
+     * @return den zwischengespeicherten Wert als double
+     */
+    public double getLatestValue() {
+        return latestValue;
+    }
+
+    /**
+     * @return den zwischengespeicherten Operationsmodus als String
+     */
+    public String getLatestOperation() {
+        return latestOperation;
+    }
+
+    /**
      * Empfängt den Wert einer gedrückten Zifferntaste. Da man nur eine Taste auf einmal
      * drücken kann muss der Wert positiv und einstellig sein und zwischen 0 und 9 liegen.
      * Führt in jedem Fall dazu, dass die gerade gedrückte Ziffer auf dem Bildschirm angezeigt
@@ -126,6 +140,7 @@ public class Calculator {
             case "-" -> latestValue - Double.parseDouble(screen);
             case "x" -> latestValue * Double.parseDouble(screen);
             case "/" -> latestValue / Double.parseDouble(screen);
+            case "" -> latestValue = Double.parseDouble(screen);
             default -> throw new IllegalArgumentException();
         };
         screen = Double.toString(result);
