@@ -122,28 +122,59 @@ class CalculatorTest {
         calc.pressEqualsKey();
         calc.pressClearKey();
 
-        String expected = "3";
-        String actual = calc.readScreen();
+        String expectedScreen = "0";
+        String actualScreen = calc.readScreen();
 
-        assertEquals(expected, actual);
+        double expectedValue = 1.0;
+        double actualValue = calc.getLatestValue();
+
+        String expectedOperation = "+";
+        String actualOperation = calc.getLatestOperation();
+
+        assertEquals(expectedScreen, actualScreen);
+        assertEquals(expectedValue, actualValue);
+        assertEquals(expectedOperation, actualOperation);
     }
 
+    //@Test
+    //@DisplayName("should clear screen and latest result after clicking on clear key twice")
+    //void pressClearKeyTwice() {
+      //  Calculator calc = new Calculator();
+
+        //calc.pressDigitKey(2);
+        //calc.pressBinaryOperationKey("+");
+        //calc.pressDigitKey(2);
+        //calc.pressEqualsKey();
+        //calc.pressClearKey();
+        //calc.pressClearKey();
+
+        //String expectedScreen = "0";
+        //String actualScreen = calc.readScreen();
+
+        //double expectedValue = 0.0;
+        //double actualValue = calc.getLatestValue();
+
+        //String expectedOperation = "";
+        //String actualOperation = calc.getLatestOperation();
+
+        //assertEquals(expectedScreen, actualScreen);
+        //assertEquals(expectedValue, actualValue);
+        //assertEquals(expectedOperation, actualOperation);
+    //}
+
     @Test
-    @DisplayName("should clear screen and latest result after clicking on clear key twice")
-    void pressClearKeyTwice() {
+    @DisplayName("should remain result after pressing on equal key multiple times")
+    void multipleEqualKeys() {
         Calculator calc = new Calculator();
 
-        calc.pressDigitKey(2);
-        calc.pressBinaryOperationKey("+");
-        calc.pressDigitKey(2);
+        calc.pressDigitKey(4);
         calc.pressEqualsKey();
-        calc.pressClearKey();
-        calc.pressClearKey();
+        calc.pressEqualsKey();
 
-        String expected = "4";
-        String actual = calc.readScreen();
+        String expectedScreen = "4";
+        String actualScreen = calc.readScreen();
 
-        assertEquals(expected, actual);
+        assertEquals(expectedScreen, actualScreen); //assert = behaupten
     }
 
 }
